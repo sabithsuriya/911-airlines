@@ -228,6 +228,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -299,6 +300,7 @@ body {
   0% {
     left: -100%;
   }
+
   50%,
   100% {
     left: 100%;
@@ -334,17 +336,400 @@ body {
   .global-header {
     padding: 1rem 1.5rem;
   }
+
   .header-menu {
     gap: 1.2rem;
   }
+
   .hero-text-container,
   .section2-content {
     padding-left: 2rem;
   }
+
   .hero-main-title {
     font-size: 3.5rem;
   }
+
   .hero-sub-title {
     font-size: 2.6rem;
   }
+}
+
+/* ==========================================================================
+   BOOKING PAGE SECTION & WIDGET STYLES (Matching User's Booking Page Image)
+   ========================================================================== */
+
+.booking-section-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 4rem;
+}
+
+.booking-page-content-wrapper {
+  z-index: 10;
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 2rem;
+  margin-top: auto;
+}
+
+.boo-widget-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.45);
+  color: #1e293b;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 2.2rem 2.6rem;
+  width: 100%;
+  position: relative;
+}
+
+/* Top Bar: Tabs & Find Car Link */
+.widget-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 1.8rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pill-tabs-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pill-tab {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  color: #475569;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.pill-tab:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.pill-tab.active {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+}
+
+.find-car-link {
+  color: #2563eb;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s;
+}
+
+.find-car-link:hover {
+  color: #1d4ed8;
+}
+
+/* Main Form Grid */
+.boo-form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.boo-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  position: relative;
+}
+
+.input-box-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  position: relative;
+}
+
+.input-box-label {
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.input-box-trigger {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.75rem 1.1rem;
+  min-height: 52px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-box-trigger:hover {
+  border-color: #94a3b8;
+}
+
+.trigger-value {
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.trigger-chevron {
+  color: #64748b;
+}
+
+/* Input Fields */
+.text-input-field {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 1rem;
+  min-height: 52px;
+  outline: none;
+  padding: 0.75rem 1.1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.text-input-field:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.to-input-wrapper .text-input-field:focus {
+  border-width: 2px;
+}
+
+/* Date Inputs */
+.date-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-input-field {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 1rem;
+  min-height: 52px;
+  outline: none;
+  padding: 0.75rem 2.4rem 0.75rem 1.1rem;
+  width: 100%;
+}
+
+.date-input-field:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.calendar-icon-indicator {
+  position: absolute;
+  right: 0.8rem;
+  color: #64748b;
+  pointer-events: none;
+}
+
+.input-box-wrapper.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Dropdown Menus */
+.widget-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 100;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 0.4rem;
+  width: 100%;
+  min-width: 200px;
+}
+
+.dropdown-menu-item {
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+}
+
+.dropdown-menu-item:hover,
+.dropdown-menu-item.selected {
+  background: #f1f5f9;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.airport-menu {
+  min-width: 280px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.ap-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ap-code-tag {
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.ap-text-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.ap-city-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.ap-name-sub {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* Passenger Menu */
+.passenger-menu {
+  min-width: 260px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.p-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.p-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.p-sub {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.counter-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.counter-btn-group button {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-btn-group button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.counter-btn-group span {
+  font-weight: 700;
+  font-size: 0.9rem;
+  width: 18px;
+  text-align: center;
+}
+
+.done-p-btn {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.4rem;
+}
+
+/* Action Row with Find Flights Button */
+.boo-action-row {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 0.5rem;
+}
+
+.find-flights-btn {
+  background: #2563eb;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.9rem 2.8rem;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.find-flights-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.find-flights-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
 }
