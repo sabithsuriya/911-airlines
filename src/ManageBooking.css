@@ -1,0 +1,230 @@
+/* =========================================
+   MANAGE BOOKING PAGE STYLING
+   ========================================= */
+
+.manage-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  background: #f6f8fa;
+  color: #0b1f33;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-sizing: border-box;
+}
+
+.manage-hero {
+  position: relative;
+  height: min(65vh, 520px);
+  min-height: 440px;
+  overflow: hidden;
+  background: #0a2f52;
+}
+
+.manage-hero .video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+}
+
+.manage-hero .hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 26, 46, 0.75) 0%, rgba(6, 26, 46, 0.4) 50%, rgba(6, 26, 46, 0.6) 100%);
+  z-index: 2;
+}
+
+.manage-hero-content {
+  position: relative;
+  z-index: 6;
+  padding: 130px 6vw 0;
+  max-width: 700px;
+}
+
+.manage-hero-content .eyebrow {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 8px;
+}
+
+.manage-hero-content h1 {
+  font-size: clamp(32px, 4.5vw, 48px);
+  color: #fff;
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.manage-hero-content p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15.5px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Find Booking Form Card */
+.manage-form-section {
+  max-width: 1100px;
+  margin: -60px auto 40px;
+  padding: 0 6vw;
+  position: relative;
+  z-index: 10;
+}
+
+.booking-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 40px;
+  box-shadow: 0 20px 50px rgba(6, 26, 46, 0.12);
+  border: 1px solid #dbe3ea;
+}
+
+.booking-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0b1f33;
+  margin: 0 0 8px;
+}
+
+.booking-card p.form-desc {
+  font-size: 14px;
+  color: #55697d;
+  margin: 0 0 24px;
+}
+
+.booking-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 18px;
+  align-items: flex-end;
+}
+
+@media (max-width: 800px) {
+  .booking-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0b1f33;
+}
+
+.form-field input {
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: 1px solid #c9d6e2;
+  font-size: 15px;
+  color: #0b1f33;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.form-field input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.btn-find-booking {
+  background: #e0483e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-find-booking:hover {
+  background: #b8362d;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(224, 72, 62, 0.35);
+}
+
+/* Features Grid */
+.manage-services-section {
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 6vw;
+}
+
+.manage-services-section h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: #0b1f33;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 860px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-card {
+  background: #fff;
+  border: 1px solid #dbe3ea;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: #0b1f33;
+}
+
+.service-card:hover {
+  border-color: #e0483e;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(11, 31, 51, 0.08);
+}
+
+.service-card .svc-icon {
+  width: 36px;
+  height: 36px;
+  color: #e0483e;
+}
+
+.service-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.service-card p {
+  font-size: 13.5px;
+  color: #55697d;
+  line-height: 1.5;
+  margin: 0;
+}

@@ -1,0 +1,160 @@
+/* =========================================
+   GLOBAL HEADER - 911 AIRLINES
+   ========================================= */
+
+.global-header {
+  z-index: 1000;
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-bottom: none;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+  padding: 1.8rem 4.5rem;
+  transition: all 0.3s ease;
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+
+.header-logo-wrapper {
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  display: flex;
+}
+
+.header-logo {
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
+  width: auto;
+  height: 156px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  transition: transform 0.3s ease;
+}
+
+.header-logo-wrapper:hover .header-logo {
+  transform: scale(1.04);
+}
+
+.header-menu {
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  padding: 0.4rem 0.2rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.25s;
+  position: relative;
+  font-family: inherit;
+}
+
+.nav-item:hover {
+  color: #60a5fa;
+}
+
+.nav-item:after {
+  content: "";
+  background: #60a5fa;
+  border-radius: 2px;
+  width: 0;
+  height: 2px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.nav-item:hover:after,
+.nav-item.active:after {
+  width: 100%;
+}
+
+.nav-item.active {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.header-right {
+  align-items: center;
+  gap: 1.5rem;
+  display: flex;
+}
+
+.tariff-link {
+  color: #ffffff;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.25s;
+  display: flex;
+  font-family: inherit;
+}
+
+.tariff-link:hover {
+  color: #60a5fa;
+}
+
+.login-btn {
+  color: #fff;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  padding: 0.55rem 1.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.25s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-family: inherit;
+}
+
+.login-btn:hover {
+  color: #0f172a;
+  background: #fff;
+  border-color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.35);
+}
+
+@media (max-width: 1024px) {
+  .global-header {
+    padding: 1rem 1.8rem;
+  }
+  .header-logo {
+    height: 80px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
+  .header-menu {
+    gap: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-menu {
+    display: none;
+  }
+}

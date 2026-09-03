@@ -1,8 +1,11 @@
 import { useState, useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import Header, { type PageType } from './Header';
+import HelpCenter from './HelpCenter';
+import ManageBooking from './ManageBooking';
 import './index.css';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [activeSection, setActiveSection] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -17,6 +20,19 @@ export default function App() {
   };
 
   const scrollToSection = (index: number) => {
+    if (currentPage !== 'home') {
+      setCurrentPage('home');
+      setTimeout(() => {
+        if (!containerRef.current) return;
+        const clientHeight = containerRef.current.clientHeight;
+        containerRef.current.scrollTo({
+          top: clientHeight * index,
+          behavior: 'smooth'
+        });
+      }, 50);
+      return;
+    }
+
     if (!containerRef.current) return;
     const clientHeight = containerRef.current.clientHeight;
     containerRef.current.scrollTo({
@@ -25,69 +41,45 @@ export default function App() {
     });
   };
 
+  const handleNavigate = (page: PageType, sectionIndex?: number) => {
+    if (page === 'home') {
+      if (typeof sectionIndex === 'number') {
+        scrollToSection(sectionIndex);
+      } else {
+        scrollToSection(0);
+      }
+      return;
+    }
+
+    if (page === 'about') {
+      scrollToSection(1);
+      return;
+    }
+
+    if (page === 'book') {
+      // Navigate to Home section 0 (or booking widget)
+      scrollToSection(0);
+      return;
+    }
+
+    setCurrentPage(page);
+  };
+
+  if (currentPage === 'help') {
+    return <HelpCenter onNavigate={handleNavigate} />;
+  }
+
+  if (currentPage === 'manage') {
+    return <ManageBooking onNavigate={handleNavigate} />;
+  }
+
   return (
     <div className="main-container" ref={containerRef} onScroll={handleScroll}>
-      <header className="global-header">
-        <a href="#" className="header-logo-wrapper" onClick={() => scrollToSection(0)}>
-          <img src="/assets/logo.png" alt="911 Airlines Logo" className="header-logo" />
-        </a>
-        <nav>
-          <ul className="header-menu">
-            <li>
-              <a
-                href="#home"
-                className={`nav-item ${activeSection === 0 ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); scrollToSection(0); }}
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#book"
-                className="nav-item"
-                onClick={(e) => { e.preventDefault(); scrollToSection(0); }}
-              >
-                Book
-              </a>
-            </li>
-            <li>
-              <a
-                href="#manage-booking"
-                className="nav-item"
-                onClick={(e) => { e.preventDefault(); scrollToSection(0); }}
-              >
-                Manage booking
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                className={`nav-item ${activeSection === 1 ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); scrollToSection(1); }}
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#help"
-                className="nav-item"
-                onClick={(e) => { e.preventDefault(); scrollToSection(1); }}
-              >
-                Help
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div className="header-right">
-          <a href="#tariff" className="tariff-link" onClick={(e) => e.preventDefault()}>
-            Tariff sheet
-            <ArrowUpRight size={14} />
-          </a>
-          <button className="login-btn">Login</button>
-        </div>
-      </header>
+      <Header
+        currentPage={currentPage}
+        activeSection={activeSection}
+        onNavigate={handleNavigate}
+      />
 
       <section className="page-section" id="home">
         <div className="video-bg-wrapper">
