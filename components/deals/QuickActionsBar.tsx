@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PlaneTakeoff, CreditCard, Users, MapPinned, BellRing } from "lucide-react";
 import type { ComponentType } from "react";
 import type { QuickAction } from "./types";
@@ -21,24 +20,24 @@ function QuickActionItem({ action }: { action: QuickAction }) {
   const Icon = ICONS[action.icon];
 
   return (
-    <Link
+    <a
       href={action.href}
-      className="group flex flex-1 flex-col items-center gap-2 px-4 py-2 text-center"
+      className="group flex flex-1 flex-col items-center justify-center gap-2.5 px-3 py-3.5 sm:py-4 text-center transition-all duration-200 hover:bg-slate-100/80 rounded-xl sm:rounded-2xl"
     >
-      <span className="relative inline-flex">
-        <Icon className="h-7 w-7 text-blue-600 transition-transform group-hover:scale-105" />
+      <span className="relative inline-flex items-center justify-center">
+        <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 transition-transform duration-300 group-hover:scale-110" />
         {action.badge && (
           <span
-            className={`absolute -right-3 -top-2 rounded-full px-1.5 py-0.5 text-[10px] font-semibold leading-none ${BADGE_STYLES[action.badge]}`}
+            className={`absolute -right-3 -top-2.5 rounded-full px-2 py-0.5 text-[10px] font-bold leading-none shadow-md ${BADGE_STYLES[action.badge]}`}
           >
             {action.badge}
           </span>
         )}
       </span>
-      <span className="text-sm font-medium text-slate-800">
+      <span className="text-xs sm:text-sm md:text-base font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
         {action.label}
       </span>
-    </Link>
+    </a>
   );
 }
 
@@ -46,11 +45,11 @@ export default function QuickActionsBar() {
   return (
     <nav
       aria-label="Quick actions"
-      className="rounded-2xl border border-slate-200 bg-white shadow-sm"
+      className="w-full rounded-2xl sm:rounded-3xl border border-white/50 bg-white/95 backdrop-blur-xl shadow-2xl overflow-hidden p-2 sm:p-3"
     >
-      <div className="flex flex-wrap items-stretch divide-y divide-slate-200 sm:flex-nowrap sm:divide-x sm:divide-y-0">
+      <div className="grid grid-cols-2 sm:grid-cols-5 w-full divide-y sm:divide-y-0 sm:divide-x divide-slate-200/70">
         {quickActions.map((action) => (
-          <div key={action.id} className="flex flex-1 basis-1/2 sm:basis-auto">
+          <div key={action.id} className="flex w-full">
             <QuickActionItem action={action} />
           </div>
         ))}

@@ -30,14 +30,6 @@ const ACCENT_STYLES: Record<WhyBookFeature["accent"], string> = {
   orange: "bg-orange-100 text-orange-600",
 };
 
-const CARD_BG: Record<WhyBookFeature["accent"], string> = {
-  indigo: "bg-indigo-50/60",
-  amber: "bg-amber-50/60",
-  fuchsia: "bg-fuchsia-50/60",
-  blue: "bg-blue-50/60",
-  orange: "bg-orange-50/60",
-};
-
 export default function WhyBookSection() {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -49,48 +41,48 @@ export default function WhyBookSection() {
   };
 
   return (
-    <section aria-labelledby="why-book-heading" className="mt-12">
+    <section aria-labelledby="why-book-heading" className="w-full rounded-3xl border border-white/30 bg-white/10 backdrop-blur-xl p-6 sm:p-8 shadow-2xl space-y-6">
       <div className="flex items-center justify-between">
-        <h2 id="why-book-heading" className="text-xl font-bold text-slate-900">
+        <h2 id="why-book-heading" className="text-2xl sm:text-3xl font-extrabold text-white drop-shadow-md">
           Why Book With 911 Airlines?
         </h2>
-        <div className="hidden gap-2 sm:flex">
+        <div className="hidden gap-2 lg:hidden sm:flex">
           <button
             type="button"
             aria-label="Scroll left"
             onClick={() => scrollBy(-1)}
-            className="rounded-full border border-slate-300 p-1.5 text-slate-600 hover:bg-slate-100"
+            className="rounded-full border border-white/30 bg-white/20 p-2 text-white hover:bg-white/30 transition-all backdrop-blur-md"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             type="button"
             aria-label="Scroll right"
             onClick={() => scrollBy(1)}
-            className="rounded-full border border-slate-300 p-1.5 text-slate-600 hover:bg-slate-100"
+            className="rounded-full border border-white/30 bg-white/20 p-2 text-white hover:bg-white/30 transition-all backdrop-blur-md"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-5 w-5" />
           </button>
         </div>
       </div>
 
       <div
         ref={scrollerRef}
-        className="mt-5 flex gap-4 overflow-x-auto scroll-smooth pb-2"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5 w-full items-stretch"
       >
         {whyBookFeatures.map((feature) => {
           const Icon = ICONS[feature.icon];
           return (
             <div
               key={feature.id}
-              className={`flex min-w-[280px] flex-1 items-center gap-4 rounded-2xl p-5 ${CARD_BG[feature.accent]}`}
+              className="flex items-center gap-4 rounded-2xl p-5 bg-white/90 backdrop-blur-md border border-white/50 shadow-xl hover:shadow-2xl hover:bg-white transition-all duration-300 w-full h-full min-h-[96px]"
             >
               <span
-                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${ACCENT_STYLES[feature.accent]}`}
+                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl shadow-md ${ACCENT_STYLES[feature.accent]}`}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="h-6 w-6" />
               </span>
-              <p className="text-sm font-semibold leading-snug text-slate-800">
+              <p className="text-sm font-bold leading-snug text-slate-900">
                 {feature.title}
               </p>
             </div>
