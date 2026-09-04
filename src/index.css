@@ -26,6 +26,7 @@ body {
 }
 
 .main-container {
+  position: relative;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   width: 100%;
@@ -76,7 +77,7 @@ body {
   padding: 1.8rem 4.5rem;
   transition: all 0.3s;
   display: grid;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 }

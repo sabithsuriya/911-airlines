@@ -1,13 +1,17 @@
 import { useState, useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import Header, { type PageType } from './Header';
+import HelpCenter from './HelpCenter';
+import ManageBooking from './ManageBooking';
 import './index.css';
 import { BookingWidget, type SearchParams } from './components/BookingWidget';
 import { FlightResults } from './components/FlightResults';
 import { PassengerForm } from './components/PassengerForm';
 import { BookingConfirmation } from './components/BookingConfirmation';
 import { type Flight, type BookingDetails } from './data/mockFlights';
+import Footer from './Footer';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [activeSection, setActiveSection] = useState(0);
   const [bookingStep, setBookingStep] = useState<'widget' | 'results' | 'passenger' | 'confirmation'>('widget');
   
@@ -29,6 +33,19 @@ export default function App() {
   };
 
   const scrollToSection = (index: number) => {
+    if (currentPage !== 'home') {
+      setCurrentPage('home');
+      setTimeout(() => {
+        if (!containerRef.current) return;
+        const clientHeight = containerRef.current.clientHeight;
+        containerRef.current.scrollTo({
+          top: clientHeight * index,
+          behavior: 'smooth'
+        });
+      }, 50);
+      return;
+    }
+
     if (!containerRef.current) return;
     const clientHeight = containerRef.current.clientHeight;
     containerRef.current.scrollTo({
@@ -61,70 +78,44 @@ export default function App() {
     setConfirmedBooking(null);
   };
 
+  const handleNavigate = (page: PageType, sectionIndex?: number) => {
+    if (page === 'home') {
+      if (typeof sectionIndex === 'number') {
+        scrollToSection(sectionIndex);
+      } else {
+        scrollToSection(0);
+      }
+      return;
+    }
+
+    if (page === 'about') {
+      scrollToSection(1);
+      return;
+    }
+
+    if (page === 'book') {
+      scrollToSection(0);
+      return;
+    }
+
+    setCurrentPage(page);
+  };
+
+  if (currentPage === 'help') {
+    return <HelpCenter onNavigate={handleNavigate} />;
+  }
+
+  if (currentPage === 'manage') {
+    return <ManageBooking onNavigate={handleNavigate} />;
+  }
+
   return (
     <div className="main-container" ref={containerRef} onScroll={handleScroll}>
-      {/* Global Header */}
-      <header className="global-header">
-        <a href="#" className="header-logo-wrapper" onClick={() => scrollToSection(0)}>
-          <img src="/assets/logo.png" alt="911 Airlines Logo" className="header-logo" />
-        </a>
-        <nav>
-          <ul className="header-menu">
-            <li>
-              <a
-                href="#home"
-                className={`nav-item ${activeSection === 0 ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); scrollToSection(0); }}
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#book"
-                className={`nav-item ${activeSection === 1 ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); scrollToSection(1); }}
-              >
-                Book
-              </a>
-            </li>
-            <li>
-              <a
-                href="#manage-booking"
-                className="nav-item"
-                onClick={(e) => { e.preventDefault(); scrollToSection(1); }}
-              >
-                Manage booking
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                className={`nav-item ${activeSection === 2 ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); scrollToSection(2); }}
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#help"
-                className="nav-item"
-                onClick={(e) => { e.preventDefault(); scrollToSection(2); }}
-              >
-                Help
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div className="header-right">
-          <a href="#tariff" className="tariff-link" onClick={(e) => e.preventDefault()}>
-            Tariff sheet
-            <ArrowUpRight size={14} />
-          </a>
-          <button className="login-btn">Login</button>
-        </div>
-      </header>
+      <Header
+        currentPage={currentPage}
+        activeSection={activeSection}
+        onNavigate={handleNavigate}
+      />
 
       {/* Section 0: Home Hero */}
       <section className="page-section" id="home">
@@ -161,6 +152,17 @@ export default function App() {
             Fly in absolute comfort to top destinations across the globe with 911 Airlines.
           </p>
         </div>
+      </section>
+
+      {/* Section 3: Footer */}
+      <section className="page-section" id="footer-section">
+        <Footer
+          onNavigateHome={() => scrollToSection(0)}
+          onNavigateBook={() => scrollToSection(1)}
+          onNavigateManage={() => handleNavigate('manage')}
+          onNavigateHelp={() => handleNavigate('help')}
+          onNavigateAbout={() => scrollToSection(2)}
+        />
       </section>
 
       {/* Full Page Overlay for Booking Search Results, Passenger Details, Boarding Pass */}
