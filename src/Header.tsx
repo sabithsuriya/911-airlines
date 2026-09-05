@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import './Header.css';
 
-export type PageType = 'home' | 'about' | 'book' | 'manage' | 'help';
+export type PageType = 'home' | 'about' | 'book' | 'manage' | 'help' | 'deals';
 
 interface HeaderProps {
   currentPage: PageType;
@@ -63,6 +63,18 @@ export default function Header({
               }}
             >
               Manage booking
+            </a>
+          </li>
+          <li>
+            <a
+              href="#deals"
+              className={`nav-item ${currentPage === 'deals' ? 'active' : ''}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('deals');
+              }}
+            >
+              Deals
             </a>
           </li>
           <li>

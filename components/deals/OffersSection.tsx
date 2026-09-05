@@ -14,43 +14,36 @@ export default function OffersSection() {
   );
 
   return (
-    <section aria-labelledby="offers-heading" className="mt-10">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <h2 id="offers-heading" className="text-xl font-bold text-slate-900">
+    <section aria-labelledby="offers-heading" className="w-full space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 id="offers-heading" className="text-xl sm:text-2xl font-bold text-slate-900">
           Today&apos;s Flight Offers
         </h2>
 
-        <div className="flex items-center gap-3">
-          <div
-            role="tablist"
-            aria-label="Offer category"
-            className="flex gap-2"
-          >
-            {TABS.map((tab) => (
-              <button
-                key={tab.id}
-                role="tab"
-                aria-selected={true}
-                className="rounded-full border border-blue-600 bg-blue-600 px-4 py-1.5 text-sm font-medium text-white transition-colors"
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+        <div className="flex items-center gap-2">
+          {TABS.map((tab) => (
+            <span
+              key={tab.id}
+              className="rounded-full bg-blue-600 px-4 py-1 text-xs sm:text-sm font-semibold text-white shadow-sm"
+            >
+              {tab.label}
+            </span>
+          ))}
         </div>
       </div>
 
       {visibleOffers.length > 0 ? (
-        <div className="mt-5 flex gap-4 overflow-x-auto pb-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 w-full">
           {visibleOffers.map((offer) => (
             <OfferCard key={offer.id} offer={offer} />
           ))}
         </div>
       ) : (
-        <p className="mt-6 text-sm text-slate-500">
+        <p className="mt-4 text-sm text-slate-600">
           No offers available in this category right now — check back soon.
         </p>
       )}
     </section>
   );
 }
+

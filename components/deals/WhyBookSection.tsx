@@ -23,19 +23,11 @@ const ICONS: Record<string, ComponentType<{ className?: string }>> = {
 };
 
 const ACCENT_STYLES: Record<WhyBookFeature["accent"], string> = {
-  indigo: "bg-indigo-100 text-indigo-600",
-  amber: "bg-amber-100 text-amber-600",
-  fuchsia: "bg-fuchsia-100 text-fuchsia-600",
-  blue: "bg-blue-100 text-blue-600",
-  orange: "bg-orange-100 text-orange-600",
-};
-
-const CARD_BG: Record<WhyBookFeature["accent"], string> = {
-  indigo: "bg-indigo-50/60",
-  amber: "bg-amber-50/60",
-  fuchsia: "bg-fuchsia-50/60",
-  blue: "bg-blue-50/60",
-  orange: "bg-orange-50/60",
+  indigo: "bg-indigo-100/80 text-indigo-600",
+  amber: "bg-amber-100/80 text-amber-600",
+  fuchsia: "bg-fuchsia-100/80 text-fuchsia-600",
+  blue: "bg-blue-100/80 text-blue-600",
+  orange: "bg-orange-100/80 text-orange-600",
 };
 
 export default function WhyBookSection() {
@@ -43,23 +35,26 @@ export default function WhyBookSection() {
 
   const scrollBy = (direction: 1 | -1) => {
     scrollerRef.current?.scrollBy({
-      left: direction * 320,
+      left: direction * 300,
       behavior: "smooth",
     });
   };
 
+  // Slice first 4 features to match reference desktop layout perfectly
+  const featuresToDisplay = whyBookFeatures.slice(0, 4);
+
   return (
-    <section aria-labelledby="why-book-heading" className="mt-12">
+    <section aria-labelledby="why-book-heading" className="w-full space-y-4">
       <div className="flex items-center justify-between">
-        <h2 id="why-book-heading" className="text-xl font-bold text-slate-900">
+        <h2 id="why-book-heading" className="text-xl sm:text-2xl font-bold text-slate-900">
           Why Book With 911 Airlines?
         </h2>
-        <div className="hidden gap-2 sm:flex">
+        <div className="flex gap-2">
           <button
             type="button"
             aria-label="Scroll left"
             onClick={() => scrollBy(-1)}
-            className="rounded-full border border-slate-300 p-1.5 text-slate-600 hover:bg-slate-100"
+            className="rounded-full border border-white/60 bg-white/40 p-1.5 text-slate-700 hover:bg-white/80 transition-colors backdrop-blur-xs shadow-2xs"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -67,7 +62,7 @@ export default function WhyBookSection() {
             type="button"
             aria-label="Scroll right"
             onClick={() => scrollBy(1)}
-            className="rounded-full border border-slate-300 p-1.5 text-slate-600 hover:bg-slate-100"
+            className="rounded-full border border-white/60 bg-white/40 p-1.5 text-slate-700 hover:bg-white/80 transition-colors backdrop-blur-xs shadow-2xs"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
@@ -76,21 +71,21 @@ export default function WhyBookSection() {
 
       <div
         ref={scrollerRef}
-        className="mt-5 flex gap-4 overflow-x-auto scroll-smooth pb-2"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full"
       >
-        {whyBookFeatures.map((feature) => {
+        {featuresToDisplay.map((feature) => {
           const Icon = ICONS[feature.icon];
           return (
             <div
               key={feature.id}
-              className={`flex min-w-[280px] flex-1 items-center gap-4 rounded-2xl p-5 ${CARD_BG[feature.accent]}`}
+              className="flex items-center gap-3.5 rounded-2xl p-4 bg-white/75 backdrop-blur-sm border border-white/70 shadow-xs hover:shadow-sm hover:bg-white/90 transition-all min-h-[96px]"
             >
               <span
-                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${ACCENT_STYLES[feature.accent]}`}
+                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full shadow-2xs ${ACCENT_STYLES[feature.accent]}`}
               >
                 <Icon className="h-5 w-5" />
               </span>
-              <p className="text-sm font-semibold leading-snug text-slate-800">
+              <p className="text-xs sm:text-sm font-semibold leading-snug text-slate-800">
                 {feature.title}
               </p>
             </div>
@@ -100,3 +95,4 @@ export default function WhyBookSection() {
     </section>
   );
 }
+
