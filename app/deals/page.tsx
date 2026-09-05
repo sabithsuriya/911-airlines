@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { QuickActionsBar, OffersSection, WhyBookSection } from "@/components/deals";
+import "@/src/Deals.css";
 
 export const metadata: Metadata = {
   title: "Exclusive Deals | 911 Airlines",
@@ -9,30 +10,28 @@ export const metadata: Metadata = {
 
 export default function ExclusiveDealsPage() {
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="deals-page">
       {/* Background Video */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="fixed inset-0 h-full w-full object-cover -z-20 pointer-events-none"
+        className="deals-bg-video"
       >
         <source src="/videos/airline-bg.mp4" type="video/mp4" />
       </video>
 
       {/* Subtle Dark Overlay */}
-      <div className="fixed inset-0 bg-black/30 -z-10 pointer-events-none" />
+      <div className="deals-overlay" />
 
       {/* Main Content */}
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-        <h1 className="text-2xl font-bold text-slate-900">
+      <main className="deals-content">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
           Do More With 911 Airlines
         </h1>
 
-        <div className="mt-4">
-          <QuickActionsBar />
-        </div>
+        <QuickActionsBar />
 
         <OffersSection />
 
@@ -41,3 +40,4 @@ export default function ExclusiveDealsPage() {
     </div>
   );
 }
+
