@@ -1,5 +1,4 @@
 @import "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap";
-@import "tailwindcss";
 
 :root {
   --primary-color: #3b82f6;
@@ -259,8 +258,8 @@ body {
 }
 
 .scroll-indicator {
-  z-index: 15;
-  color: rgba(255, 255, 255, 0.85);
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
@@ -356,112 +355,6 @@ body {
     font-size: 2.6rem;
   }
 }
-
-/* ===================================================
-   Flight Journey Transition System (Hero -> Section 2)
-   =================================================== */
-
-/* Color-matched subtle atmospheric edge gradient for Section 1 */
-.flight-transition-bottom-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 28vh;
-  pointer-events: none;
-  z-index: 4;
-  background: linear-gradient(
-    to bottom,
-    rgba(11, 19, 41, 0) 0%,
-    rgba(15, 23, 42, 0.35) 45%,
-    rgba(40, 95, 170, 0.5) 80%,
-    rgba(72, 140, 212, 0.82) 100%
-  );
-}
-
-/* Color-matched subtle atmospheric edge gradient for Section 2 */
-.flight-transition-top-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 24vh;
-  pointer-events: none;
-  z-index: 4;
-  background: linear-gradient(
-    to bottom,
-    rgba(72, 140, 212, 0.82) 0%,
-    rgba(50, 115, 185, 0.35) 50%,
-    rgba(11, 19, 41, 0) 100%
-  );
-}
-
-/* Animated Flight Route Container */
-.flight-journey-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 34vh;
-  pointer-events: none;
-  z-index: 6;
-  overflow: hidden;
-}
-
-.flight-journey-container-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 26vh;
-  pointer-events: none;
-  z-index: 6;
-  overflow: hidden;
-}
-
-.flight-journey-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* Active Dash Offset Animation for Flight Route */
-.flight-active-line {
-  animation: flightDashAnim 30s linear infinite;
-}
-
-@keyframes flightDashAnim {
-  from {
-    stroke-dashoffset: 240;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-/* Pulse animation for route Waypoints */
-.waypoint-pulse {
-  animation: pulseWaypoint 2.5s ease-in-out infinite;
-}
-
-@keyframes pulseWaypoint {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.6);
-    opacity: 0.3;
-  }
-}
-
-@media (max-width: 768px) {
-  .flight-journey-container,
-  .flight-journey-container-top {
-    opacity: 0.7;
-  }
-}
-
 
 /* ==========================================================================
    BOOKING PAGE SECTION & WIDGET STYLES (Matching User's Booking Page Image)
