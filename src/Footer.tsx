@@ -12,7 +12,6 @@ interface FooterProps {
 }
 
 export default function Footer({
-  onNavigateHome,
   onNavigateBook,
   onNavigateManage,
   onNavigateHelp,
