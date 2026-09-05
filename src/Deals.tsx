@@ -5,7 +5,7 @@ export default function Deals() {
   return (
     <div className="deals-page">
       <video autoPlay loop muted playsInline className="deals-bg-video">
-        <source src="/videos/airline-bg.mp4" type="video/mp4" />
+        <source src="/videos/911airhero.mp4" type="video/mp4" />
       </video>
 
       <div className="deals-overlay" />

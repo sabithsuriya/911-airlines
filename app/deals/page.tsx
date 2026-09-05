@@ -19,7 +19,7 @@ export default function ExclusiveDealsPage() {
         playsInline
         className="deals-bg-video"
       >
-        <source src="/videos/airline-bg.mp4" type="video/mp4" />
+        <source src="/videos/911airhero.mp4" type="video/mp4" />
       </video>
 
       {/* Subtle Dark Overlay */}
